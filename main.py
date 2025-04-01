@@ -17,16 +17,31 @@ def input_column():
     column = input(f"{player_1} which column would you like to drop your tile in (A-G)? ")
 
 
-def check_column():
+def check_column(column):
     pass
 
-def drop_tile():
+def drop_tile(column, row):
     pass
 
-def update_grid():
+def update_grid(grid):
     pass
 
-def print_grid():
+def print_grid(grid):
+    pass
+
+def check_horizontal():
+    pass
+
+def check_vertical():  
+    pass
+
+def check_diagonal_left():
+    pass
+
+def check_diagonal_right():
+    pass
+
+def check_win():
     pass
 
 

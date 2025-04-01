@@ -1,5 +1,5 @@
 # testing
-
+valid_columns = ["a", "b", "c", "d", "e", "f", "g"]
 def startup():
     global player_1
     global player_2
@@ -16,8 +16,14 @@ def input_column(current_player):
     column = input(f"{current_player} which column would you like to drop your tile in (A-G)? ")
     return column
 
-def check_column(column):
-    pass
+def check_column(column, row):
+    if column in valid_columns:
+        if row == 1:
+            return False
+        else:
+            return True
+    else:
+        return False
 
 def drop_tile(column, row):
     pass
@@ -54,7 +60,12 @@ def get_next_player(current_player):
     return next_player
 
 def player_turn(current_player):
-    input_column()
+    column_valid = False
+    while column_valid == False:
+        column = input_column(current_player)
+        column_valid = check_column(column, row)
+    
+
     
 
 def main():

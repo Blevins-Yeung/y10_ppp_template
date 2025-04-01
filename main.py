@@ -8,7 +8,12 @@ def startup():
     player_2 = input("Player 2: Enter your name ")
     
 def make_grid():
-    pass
+    return [[" ", " ", " ", " ", " ", " ", " "],
+            [" ", " ", " ", " ", " ", " ", " "],
+            [" ", " ", " ", " ", " ", " ", " "],
+            [" ", " ", " ", " ", " ", " ", " "],
+            [" ", " ", " ", " ", " ", " ", " "],
+            [" ", " ", " ", " ", " ", " ", " "]]
 
 
 def input_column(current_player):

@@ -12,9 +12,9 @@ def make_grid():
 
 
 
-def input_column(player):
-    column = input(f"{player_1} which column would you like to drop your tile in (A-G)? ")
-
+def input_column(current_player):
+    column = input(f"{current_player} which column would you like to drop your tile in (A-G)? ")
+    return column
 
 def check_column(column):
     pass
@@ -53,7 +53,7 @@ def get_next_player(current_player):
     
     return next_player
 
-def player_turn(player):
+def player_turn(current_player):
     input_column()
     
 

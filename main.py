@@ -10,10 +10,9 @@ def startup():
 def make_grid():
     pass
 
-def player_turn(player):
-    pass
 
-def input_column():
+
+def input_column(player):
     column = input(f"{player_1} which column would you like to drop your tile in (A-G)? ")
 
 
@@ -43,6 +42,32 @@ def check_diagonal_right():
 
 def check_win():
     pass
+
+def get_next_player(current_player):
+    if current_player == None:
+        next_player = player_1
+    elif current_player == player_1:
+        next_player = player_2
+    else:
+        next_player = player_1
+    
+    return next_player
+
+def player_turn(player):
+    input_column()
+    
+
+def main():
+    startup()
+    grid = make_grid()
+    print_grid(grid)
+    end_game = False
+    current_player = None
+    while end_game == False:
+        current_player = get_next_player(current_player)
+
+
+
 
 
 

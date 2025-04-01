@@ -11,7 +11,6 @@ def make_grid():
     pass
 
 
-
 def input_column(current_player):
     column = input(f"{current_player} which column would you like to drop your tile in (A-G)? ")
     return column

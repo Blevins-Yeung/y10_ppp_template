@@ -7,12 +7,10 @@ def startup():
     player_1 = input("Player 1: Enter your name ")
     player_2 = input("Player 2: Enter your name ")
     
-
-
 def make_grid():
     pass
 
-def player_turn():
+def player_turn(player):
     pass
 
 def input_column():
@@ -23,5 +21,15 @@ def check_column():
     pass
 
 def drop_tile():
-    
+    pass
+
+def update_grid():
+    pass
+
+def print_grid():
+    pass
+
+
+
+
 

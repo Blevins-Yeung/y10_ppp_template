@@ -36,7 +36,9 @@ def update_grid(grid):
     pass
 
 def print_grid(grid):
-    pass
+    for row in grid:
+        for square in row:
+            print(square, end = " ")
 
 def check_horizontal():
     pass
@@ -84,7 +86,7 @@ def main():
 
 
 
-
+main()
 
 
 

@@ -1,4 +1,7 @@
-# testing
+import colorama
+from colorama import Fore, Back, Style
+colorama.init()
+
 valid_columns = ["A", "B", "C", "D", "E", "F", "G"]
 def startup():
     global player_1
@@ -30,8 +33,9 @@ def check_column(column, grid):
         return False
 
 def drop_tile(column, grid):
-    for i in range(6):
-        pass
+    for i in range(5, -1, -1):
+        if grid[i][column] == " ":
+            pass
 
 def update_grid(grid):
     pass
@@ -76,7 +80,7 @@ def player_turn(current_player):
     column_valid = False
     while column_valid == False:
         column = input_column(current_player)
-        column_valid = check_column(column, row)
+        column_valid = check_column(column)
     
 
     

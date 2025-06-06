@@ -1,7 +1,7 @@
 import colorama
 from colorama import Fore, Back, Style
-colorama.init()
-
+player_1_tile = Fore.BLUE + Style.BRIGHT + "O"
+player_2_tile = Fore.RED + Style.BRIGHT + "O"
 valid_columns = ["A", "B", "C", "D", "E", "F", "G"]
 def startup():
     global player_1
@@ -32,10 +32,16 @@ def check_column(column, grid):
     else:
         return False
 
-def drop_tile(column, grid):
+def drop_tile(column, grid, current_player):
+    filled_rows = 0 
     for i in range(5, -1, -1):
         if grid[i][column] == " ":
-            pass
+            if current_player == player_1:
+                grid[i][column] = player_1_tile
+            else:
+                grid[i][column] = player_2_tile
+    return grid
+        
 
 def update_grid(grid):
     pass
@@ -83,20 +89,22 @@ def player_turn(current_player):
         column_valid = check_column(column)
     
 
-    
 
 def main():
+    end_game = False
+    current_player = None
     startup()
     grid = make_grid() 
     print_grid(grid)
-    end_game = False
-    current_player = None
     while end_game == False:
         current_player = get_next_player(current_player)
-        column = input_column(current_player)
-        column_validity = check_column(column, grid)
-        if column_validity == True:
-            drop_tile()
+        column_validity = False
+        while column_validity == False:
+            column = input_column(current_player)
+            column = ord(column) - 65
+            column_validity = check_column(column, grid)
+        grid = drop_tile(column, grid, current_player)
+        print(grid)
 
 
 

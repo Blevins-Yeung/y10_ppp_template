@@ -26,15 +26,18 @@ def input_column(current_player):
 def check_column(column, grid):
     if column in valid_columns:
         if grid[0][ord(column) - 65] == " ":
+            print("True")
             return True
         else:
+            print("False")
             return False
     else:
+        print("What")
         return False
 
 def drop_tile(column, grid, current_player):
-    filled_rows = 0 
     for i in range(5, -1, -1):
+        print[i][column]
         if grid[i][column] == " ":
             if current_player == player_1:
                 grid[i][column] = player_1_tile

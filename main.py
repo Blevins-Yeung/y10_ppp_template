@@ -59,7 +59,7 @@ def print_grid(grid):
         
 
 def check_horizontal():
-    
+    pass
 
 def check_vertical():  
     pass

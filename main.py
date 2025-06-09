@@ -48,7 +48,6 @@ def drop_tile(column, grid, current_player):
     return grid
         
 def print_grid(grid):
-    
     print(" A B C D E F G ")
     for row in grid:
         print("|", end = "")
@@ -59,7 +58,14 @@ def print_grid(grid):
         
 
 def check_horizontal():
+    win = False
+    check_all = False
+    while win == False or check_all == False:
+        for i in range(6):
+            for o in range(4):
+                pass
     pass
+        
 
 def check_vertical():  
     pass

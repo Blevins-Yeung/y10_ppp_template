@@ -104,7 +104,6 @@ def main():
         column_validity = False
         while column_validity == False:
             column = input_column(current_player)
-            column = ord(column) - 65
             column_validity = check_column(column, grid)
         grid = drop_tile(column, grid, current_player)
         print(grid)

@@ -38,6 +38,7 @@ def drop_tile(column, grid, current_player):
         if grid[i][column] == " ":
             if current_player == player_1:
                 grid[i][column] = player_1_tile
+                print("")
                 break
             else:
                 grid[i][column] = player_2_tile

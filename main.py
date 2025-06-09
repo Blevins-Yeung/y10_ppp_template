@@ -26,24 +26,22 @@ def input_column(current_player):
 def check_column(column, grid):
     if column in valid_columns:
         if grid[0][ord(column) - 65] == " ":
-            print("True")
             return True
         else:
-            print("False")
             return False
     else:
-        print("What")
         return False
 
 def drop_tile(column, grid, current_player):
     column = ord(column) - 65
     for i in range(5, -1, -1):
-        print(grid[i][column])
         if grid[i][column] == " ":
             if current_player == player_1:
                 grid[i][column] = player_1_tile
+                break
             else:
                 grid[i][column] = player_2_tile
+                break
     return grid
         
 
@@ -107,7 +105,7 @@ def main():
             column = input_column(current_player)
             column_validity = check_column(column, grid)
         grid = drop_tile(column, grid, current_player)
-        print(grid)
+        print_grid(grid)
 
 
 

@@ -36,8 +36,9 @@ def check_column(column, grid):
         return False
 
 def drop_tile(column, grid, current_player):
+    column = ord(column) - 65
     for i in range(5, -1, -1):
-        print[i][column]
+        print(grid[i][column])
         if grid[i][column] == " ":
             if current_player == player_1:
                 grid[i][column] = player_1_tile

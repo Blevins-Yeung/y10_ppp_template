@@ -1,8 +1,11 @@
 import colorama
 from colorama import Fore, Back, Style
+
 player_1_tile = Fore.BLUE + Style.BRIGHT + "O" + Style.RESET_ALL
 player_2_tile = Fore.RED + Style.BRIGHT + "O" + Style.RESET_ALL
+
 valid_columns = ["A", "B", "C", "D", "E", "F", "G"]
+
 def startup():
     global player_1
     global player_2
@@ -44,10 +47,6 @@ def drop_tile(column, grid, current_player):
                 break
     return grid
         
-
-def update_grid(grid):
-    pass
-
 def print_grid(grid):
     
     print(" A B C D E F G ")
@@ -60,7 +59,7 @@ def print_grid(grid):
         
 
 def check_horizontal():
-    pass
+    
 
 def check_vertical():  
     pass
@@ -71,8 +70,6 @@ def check_diagonal_left():
 def check_diagonal_right():
     pass
 
-def check_win():
-    pass
 
 def get_next_player(current_player):
     if current_player == None:

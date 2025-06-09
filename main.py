@@ -1,7 +1,7 @@
 import colorama
 from colorama import Fore, Back, Style
-player_1_tile = Fore.BLUE + Style.BRIGHT + "O"
-player_2_tile = Fore.RED + Style.BRIGHT + "O"
+player_1_tile = Fore.BLUE + Style.BRIGHT + "O" + Style.RESET_ALL
+player_2_tile = Fore.RED + Style.BRIGHT + "O" + Style.RESET_ALL
 valid_columns = ["A", "B", "C", "D", "E", "F", "G"]
 def startup():
     global player_1
@@ -38,7 +38,6 @@ def drop_tile(column, grid, current_player):
         if grid[i][column] == " ":
             if current_player == player_1:
                 grid[i][column] = player_1_tile
-                print("")
                 break
             else:
                 grid[i][column] = player_2_tile

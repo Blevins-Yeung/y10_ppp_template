@@ -1,10 +1,9 @@
 import colorama
 from colorama import Fore, Back, Style
 
-player_1_tile = Fore.BLUE + Style.BRIGHT + "O" + Style.RESET_ALL
-player_2_tile = Fore.RED + Style.BRIGHT + "O" + Style.RESET_ALL
-
-valid_columns = ["A", "B", "C", "D", "E", "F", "G"]
+PLAYER_1_TILE = Fore.BLUE + Style.BRIGHT + "O" + Style.RESET_ALL
+PLAYER_2_TILE = Fore.RED + Style.BRIGHT + "O" + Style.RESET_ALL
+VALID_COLUMNS = ["A", "B", "C", "D", "E", "F", "G"]
 
 def startup():
     global player_1
@@ -21,13 +20,12 @@ def make_grid():
             [" ", " ", " ", " ", " ", " ", " "],
             [" ", " ", " ", " ", " ", " ", " "]]
 
-
 def input_column(current_player):
     column = input(f"{current_player} which column would you like to drop your tile in (A-G)? ").upper()
     return column
 
 def check_column(column, grid):
-    if column in valid_columns:
+    if column in VALID_COLUMNS:
         if grid[0][ord(column) - 65] == " ":
             return True
         else:
@@ -40,10 +38,10 @@ def drop_tile(column, grid, current_player):
     for i in range(5, -1, -1):
         if grid[i][column] == " ":
             if current_player == player_1:
-                grid[i][column] = player_1_tile
+                grid[i][column] = PLAYER_1_TILE
                 break
             else:
-                grid[i][column] = player_2_tile
+                grid[i][column] = PLAYER_2_TILE
                 break
     return grid
         
@@ -56,61 +54,44 @@ def print_grid(grid):
         print()
     print("‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾")
         
-
 def check_horizontal(grid):
     win = False
     check_all = False
     while win == False and check_all == False:
         for row in range(6):
             for column in range(4):
-                if grid[row][column] == player_1_tile:
-                    if grid[row][column + 1] == player_1_tile:
-                        if grid[row][column + 2] == player_1_tile:
-                            if grid[row][column + 3] == player_1_tile:
+                if grid[row][column] == PLAYER_1_TILE:
+                    if grid[row][column + 1] == PLAYER_1_TILE:
+                        if grid[row][column + 2] == PLAYER_1_TILE:
+                            if grid[row][column + 3] == PLAYER_1_TILE:
                                 win = True
                             else:
                                 if row == 5 and column == 3:
                                     check_all = True
-                                else:
-                                    pass
                         else:
                             if row == 5 and column == 3:
                                  check_all = True
-                            else:
-                                pass
                     else:
                         if row == 5 and column == 3:
                             check_all = True
-                        else:
-                            pass
-                elif grid[row][column] == player_2_tile:
-                    if grid[row][column + 1] == player_2_tile:
-                        if grid[row][column + 2] == player_2_tile:
-                            if grid[row][column + 3] == player_2_tile:
+                elif grid[row][column] == PLAYER_2_TILE:
+                    if grid[row][column + 1] == PLAYER_2_TILE:
+                        if grid[row][column + 2] == PLAYER_2_TILE:
+                            if grid[row][column + 3] == PLAYER_2_TILE:
                                 win = True
                             else:
                                 if row == 5 and column == 3:
                                     check_all = True
-                                else:
-                                    pass
                         else:
                             if row == 5 and column == 3:
                                 check_all = True
-                            else:
-                                pass
                     else:
                         if row == 5 and column == 3:
                             check_all = True
-                        else:
-                            pass
                 else:
                     if row == 5 and column == 3:
                         check_all = True
-                    else:
-                        pass
-
     return win
-        
 
 def check_vertical(grid):
     win = False
@@ -118,59 +99,122 @@ def check_vertical(grid):
     while win == False and check_all == False:
         for row in range(3):
             for column in range(7):
-                if grid[row][column] == player_1_tile:
-                    if grid[row][column + 1] == player_1_tile:
-                        if grid[row][column + 2] == player_1_tile:
-                            if grid[row][column + 3] == player_1_tile:
+                if grid[row][column] == PLAYER_1_TILE:
+                    if grid[row + 1][column] == PLAYER_1_TILE:
+                        if grid[row + 2][column] == PLAYER_1_TILE:
+                            if grid[row + 3][column] == PLAYER_1_TILE:
+                                win = True
+                            else:
+                                if row == 2 and column == 6:
+                                    check_all = True
+                        else:
+                            if row == 2 and column == 6:
+                                 check_all = True
+                    else:
+                        if row == 2 and column == 6:
+                            check_all = True
+                elif grid[row][column] == PLAYER_2_TILE:
+                    if grid[row + 1][column] == PLAYER_2_TILE:
+                        if grid[row + 2][column] == PLAYER_2_TILE:
+                            if grid[row + 3][column] == PLAYER_2_TILE:
+                                win = True
+                            else:
+                                if row == 2 and column == 6:
+                                    check_all = True
+                        else:
+                            if row == 2 and column == 6:
+                                check_all = True
+                    else:
+                        if row == 2 and column == 6:
+                            check_all = True
+                else:
+                    if row == 2 and column == 6:
+                        check_all = True
+    return win
+
+def check_diagonal_right(grid):
+    win = False
+    check_all = False
+    while win == False and check_all == False:
+        for row in range(3):
+            for column in range(4):
+                if grid[row][column] == PLAYER_1_TILE:
+                    if grid[row + 1][column + 1] == PLAYER_1_TILE:
+                        if grid[row + 2][column + 2] == PLAYER_1_TILE:
+                            if grid[row + 3][column + 3] == PLAYER_1_TILE:
                                 win = True
                             else:
                                 if row == 2 and column == 3:
                                     check_all = True
-                                else:
-                                    pass
                         else:
-                            if row == 5 and column == 3:
-                                 check_all = True
-                            else:
-                                pass
+                            if row == 2 and column == 3:
+                                check_all = True
                     else:
-                        if row == 5 and column == 3:
+                        if row == 2 and column == 3:
                             check_all = True
-                        else:
-                            pass
-                elif grid[row][column] == player_2_tile:
-                    if grid[row][column + 1] == player_2_tile:
-                        if grid[row][column + 2] == player_2_tile:
-                            if grid[row][column + 3] == player_2_tile:
+                    
+                elif grid[row][column] == PLAYER_2_TILE:
+                    if grid[row + 1][column + 1] == PLAYER_2_TILE:
+                        if grid[row + 2][column + 2] == PLAYER_2_TILE:
+                            if grid[row + 3][column + 3] == PLAYER_2_TILE:
                                 win = True
                             else:
-                                if row == 5 and column == 3:
+                                if row == 2 and column == 3:
                                     check_all = True
-                                else:
-                                    pass
                         else:
-                            if row == 5 and column == 3:
-                                check_all = True
-                            else:
-                                pass
+                            if row == 2 and column == 3:
+                                check_all = True                    
                     else:
-                        if row == 5 and column == 3:
-                            check_all = True
-                        else:
-                            pass
+                        if row == 2 and column == 3:
+                            check_all = True                    
                 else:
-                    if row == 5 and column == 3:
+                    if row == 2 and column == 3:
                         check_all = True
-                    else:
-                        pass
-
     return win
 
-def check_diagonal_left():
-    pass
 
-def check_diagonal_right():
-    pass
+def check_diagonal_left(grid):
+    win = False
+    check_all = False
+    while win == False and check_all == False:
+        for row in range(3):
+            for column in range(6, 2, -1):
+                if grid[row][column] == PLAYER_1_TILE:
+                    if grid[row + 1][column -1] == PLAYER_1_TILE:
+                        if grid[row + 2][column + 2] == PLAYER_1_TILE:
+                            if grid[row + 3][column + 3] == PLAYER_1_TILE:
+                                win = True
+                            else:
+                                if row == 2 and column == 3:
+                                    check_all = True
+                        else:
+                            if row == 2 and column == 3:
+                                check_all = True
+                    else:
+                        if row == 2 and column == 3:
+                            check_all = True
+                    
+                elif grid[row][column] == PLAYER_2_TILE:
+                    if grid[row + 1][column + 1] == PLAYER_2_TILE:
+                        if grid[row + 2][column + 2] == PLAYER_2_TILE:
+                            if grid[row + 3][column + 3] == PLAYER_2_TILE:
+                                win = True
+                            else:
+                                if row == 2 and column == 3:
+                                    check_all = True
+                        else:
+                            if row == 2 and column == 3:
+                                check_all = True                    
+                    else:
+                        if row == 2 and column == 3:
+                            check_all = True                    
+                else:
+                    if row == 2 and column == 3:
+                        check_all = True
+    return win
+
+
+
 
 
 def get_next_player(current_player):
@@ -205,7 +249,8 @@ def main():
             column_validity = check_column(column, grid)
         grid = drop_tile(column, grid, current_player)
         print_grid(grid)
-        end_game = check_horizontal(grid)
+        end_game = check_horizontal(grid) or check_vertical(grid) or check_diagonal_right(grid)
+
 
 
 

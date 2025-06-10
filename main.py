@@ -66,7 +66,7 @@ def check_horizontal(grid):
                         if grid[row][column + 2] == PLAYER_1_TILE:
                             if grid[row][column + 3] == PLAYER_1_TILE:
                                 win = True
-                                winning_player = "1"
+                                
                             else:
                                 if row == 5 and column == 3:
                                     check_all = True
@@ -94,7 +94,7 @@ def check_horizontal(grid):
                 else:
                     if row == 5 and column == 3:
                         check_all = True
-    return win, winning_player
+    return win
 
 def check_vertical(grid):
     win = False
@@ -231,6 +231,8 @@ def player_turn(current_player):
         column = input_column(current_player)
         column_valid = check_column(column)
     
+def print_win_message(winning_player):
+    print("")
 
 
 def main():

@@ -172,7 +172,6 @@ def check_diagonal_right(grid):
                         check_all = True
     return win
 
-
 def check_diagonal_left(grid):
     win = False
     check_all = False
@@ -213,10 +212,6 @@ def check_diagonal_left(grid):
                         check_all = True
     return win
 
-
-
-
-
 def get_next_player(current_player):
     if current_player == None:
         next_player = player_1
@@ -250,12 +245,6 @@ def main():
         grid = drop_tile(column, grid, current_player)
         print_grid(grid)
         end_game = check_horizontal(grid) or check_vertical(grid) or check_diagonal_right(grid) or check_diagonal_left(grid)
-
-
-
-
-
-
 
 
 main()

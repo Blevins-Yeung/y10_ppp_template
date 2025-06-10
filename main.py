@@ -55,6 +55,7 @@ def print_grid(grid):
     print("‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾")
         
 def check_horizontal(grid):
+    winning_player = None
     win = False
     check_all = False
     while win == False and check_all == False:
@@ -65,6 +66,7 @@ def check_horizontal(grid):
                         if grid[row][column + 2] == PLAYER_1_TILE:
                             if grid[row][column + 3] == PLAYER_1_TILE:
                                 win = True
+                                winning_player = "1"
                             else:
                                 if row == 5 and column == 3:
                                     check_all = True
@@ -79,6 +81,7 @@ def check_horizontal(grid):
                         if grid[row][column + 2] == PLAYER_2_TILE:
                             if grid[row][column + 3] == PLAYER_2_TILE:
                                 win = True
+                                winning_player = "2"
                             else:
                                 if row == 5 and column == 3:
                                     check_all = True
@@ -91,7 +94,7 @@ def check_horizontal(grid):
                 else:
                     if row == 5 and column == 3:
                         check_all = True
-    return win
+    return win, winning_player
 
 def check_vertical(grid):
     win = False

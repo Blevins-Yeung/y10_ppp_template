@@ -180,9 +180,9 @@ def check_diagonal_left(grid):
         for row in range(3):
             for column in range(6, 2, -1):
                 if grid[row][column] == PLAYER_1_TILE:
-                    if grid[row + 1][column -1] == PLAYER_1_TILE:
-                        if grid[row + 2][column + 2] == PLAYER_1_TILE:
-                            if grid[row + 3][column + 3] == PLAYER_1_TILE:
+                    if grid[row + 1][column - 1] == PLAYER_1_TILE:
+                        if grid[row + 2][column - 2] == PLAYER_1_TILE:
+                            if grid[row + 3][column - 3] == PLAYER_1_TILE:
                                 win = True
                             else:
                                 if row == 2 and column == 3:
@@ -195,9 +195,9 @@ def check_diagonal_left(grid):
                             check_all = True
                     
                 elif grid[row][column] == PLAYER_2_TILE:
-                    if grid[row + 1][column + 1] == PLAYER_2_TILE:
-                        if grid[row + 2][column + 2] == PLAYER_2_TILE:
-                            if grid[row + 3][column + 3] == PLAYER_2_TILE:
+                    if grid[row + 1][column - 1] == PLAYER_2_TILE:
+                        if grid[row + 2][column - 2] == PLAYER_2_TILE:
+                            if grid[row + 3][column - 3] == PLAYER_2_TILE:
                                 win = True
                             else:
                                 if row == 2 and column == 3:

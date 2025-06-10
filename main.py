@@ -9,8 +9,8 @@ def startup():
     global player_1
     global player_2
 
-    player_1 = input("Player 1: Enter your name ")
-    player_2 = input("Player 2: Enter your name ")
+    player_1 = input("Player 1, enter your name: ")
+    player_2 = input("Player 2, enter your name: ")
     
 def make_grid():
     return [[" ", " ", " ", " ", " ", " ", " "],
@@ -21,7 +21,7 @@ def make_grid():
             [" ", " ", " ", " ", " ", " ", " "]]
 
 def input_column(current_player):
-    column = input(f"{current_player} which column would you like to drop your tile in (A-G)? ").upper()
+    column = input(f"{current_player}, which column would you like to drop your tile in (A-G)? ").upper()
     return column
 
 def check_column(column, grid):

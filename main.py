@@ -250,7 +250,7 @@ def main():
             column_validity = check_column(column, grid)
         grid = drop_tile(column, grid, current_player)
         print_grid(grid)
-        end_game, winning_player = check_horizontal(grid) or check_vertical(grid) or check_diagonal_right(grid) or check_diagonal_left(grid)
+        winning_player, end_game = check_horizontal(grid) or check_vertical(grid) or check_diagonal_right(grid) or check_diagonal_left(grid)
         print_win_message(winning_player)
 
 main()

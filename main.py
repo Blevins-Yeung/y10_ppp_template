@@ -66,8 +66,6 @@ def check_horizontal(grid):
                         if grid[row][column + 2] == PLAYER_1_TILE:
                             if grid[row][column + 3] == PLAYER_1_TILE:
                                 win = True
-                                winning_player = "1"
-                                return winning_player
                             else:
                                 if row == 5 and column == 3:
                                     check_all = True
@@ -82,8 +80,6 @@ def check_horizontal(grid):
                         if grid[row][column + 2] == PLAYER_2_TILE:
                             if grid[row][column + 3] == PLAYER_2_TILE:
                                 win = True
-                                winning_player = "2"
-                                return winning_player 
                             else:
                                 if row == 5 and column == 3:
                                     check_all = True
@@ -109,8 +105,6 @@ def check_vertical(grid):
                         if grid[row + 2][column] == PLAYER_1_TILE:
                             if grid[row + 3][column] == PLAYER_1_TILE:
                                 win = True
-                                winning_player = "1"
-                                return winning_player
                             else:
                                 if row == 2 and column == 6:
                                     check_all = True
@@ -125,8 +119,6 @@ def check_vertical(grid):
                         if grid[row + 2][column] == PLAYER_2_TILE:
                             if grid[row + 3][column] == PLAYER_2_TILE:
                                 win = True
-                                winning_player = "2"
-                                return winning_player
                             else:
                                 if row == 2 and column == 6:
                                     check_all = True
@@ -152,8 +144,6 @@ def check_diagonal_right(grid):
                         if grid[row + 2][column + 2] == PLAYER_1_TILE:
                             if grid[row + 3][column + 3] == PLAYER_1_TILE:
                                 win = True
-                                winning_player = "1"
-                                return winning_player
                             else:
                                 if row == 2 and column == 3:
                                     check_all = True
@@ -169,8 +159,6 @@ def check_diagonal_right(grid):
                         if grid[row + 2][column + 2] == PLAYER_2_TILE:
                             if grid[row + 3][column + 3] == PLAYER_2_TILE:
                                 win = True
-                                winning_player = "2"
-                                return winning_player
                             else:
                                 if row == 2 and column == 3:
                                     check_all = True
@@ -196,8 +184,6 @@ def check_diagonal_left(grid):
                         if grid[row + 2][column - 2] == PLAYER_1_TILE:
                             if grid[row + 3][column - 3] == PLAYER_1_TILE:
                                 win = True
-                                winning_player = "1"
-                                return winning_player
                             else:
                                 if row == 2 and column == 3:
                                     check_all = True
@@ -213,8 +199,6 @@ def check_diagonal_left(grid):
                         if grid[row + 2][column - 2] == PLAYER_2_TILE:
                             if grid[row + 3][column - 3] == PLAYER_2_TILE:
                                 win = True
-                                winning_player = "2"
-                                return winning_player
                             else:
                                 if row == 2 and column == 3:
                                     check_all = True
@@ -263,8 +247,8 @@ def main():
             column_validity = check_column(column, grid)
         grid = drop_tile(column, grid, current_player)
         print_grid(grid)
-        winning_player, end_game = check_horizontal(grid) or check_vertical(grid) or check_diagonal_right(grid) or check_diagonal_left(grid)
-        print_win_message(winning_player)
+        end_game = check_horizontal(grid) or check_vertical(grid) or check_diagonal_right(grid) or check_diagonal_left(grid)
+        
 
 main()
 

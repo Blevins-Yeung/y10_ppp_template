@@ -230,7 +230,7 @@ def player_turn(current_player):
         column_valid = check_column(column)
     
 def print_win_message(current_player):
-    print(f"Player {winning_player} has won the game!")
+    print(f"Player {current_player} has won the game!")
 
 
 def main():
@@ -248,7 +248,7 @@ def main():
         grid = drop_tile(column, grid, current_player)
         print_grid(grid)
         end_game = check_horizontal(grid) or check_vertical(grid) or check_diagonal_right(grid) or check_diagonal_left(grid)
-        print_win_message(current_player)
+    print_win_message(current_player)
 
 main()
 

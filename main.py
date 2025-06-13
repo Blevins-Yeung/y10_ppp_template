@@ -6,12 +6,19 @@ PLAYER_2_TILE = Fore.RED + Style.BRIGHT + "O" + Style.RESET_ALL
 VALID_COLUMNS = ["A", "B", "C", "D", "E", "F", "G"]
 
 def startup():
-    global player_1
-    global player_2
+    print(" _____                              _       ___")
+    print("/  __ \                            | |     /   |")
+    print("| /  \/ ___  _ __  _ __   ___  ___ | |_   / /| |")
+    print("| |    / _ \|  _ \|  _ \ / _ \/ _ || __| / /_| |")
+    print("| \__/\ (_) | | | | | | |  __/ (__ | |_  \___  |")
+    print(" \____/\___/|_| |_|_| |_|\___|\___| \__|     |_/ \n")
 
-    player_1 = input("Player 1, enter your name: ")
-    player_2 = input("Player 2, enter your name: ")
+    print("Enter P to play")
+    player_1_name = input("Player 1, enter your name: ")
+    player_2_name = input("Player 2, enter your name: ")
     
+    return player_1_name, player_2_name
+
 def make_grid():
     return [[" ", " ", " ", " ", " ", " ", " "],
             [" ", " ", " ", " ", " ", " ", " "],
@@ -33,11 +40,11 @@ def check_column(column, grid):
     else:
         return False
 
-def drop_tile(column, grid, current_player):
+def drop_tile(column, grid, current_player, player_1_name):
     column = ord(column) - 65
     for i in range(5, -1, -1):
         if grid[i][column] == " ":
-            if current_player == player_1:
+            if current_player == player_1_name:
                 grid[i][column] = PLAYER_1_TILE
                 break
             else:
@@ -213,13 +220,13 @@ def check_diagonal_left(grid):
                         check_all = True
     return win
 
-def get_next_player(current_player):
+def get_next_player(current_player, player_1_name, player_2_name):
     if current_player == None:
-        next_player = player_1
-    elif current_player == player_1:
-        next_player = player_2
+        next_player = player_1_name
+    elif current_player == player_1_name:
+        next_player = player_2_name
     else:
-        next_player = player_1
+        next_player = player_1_name
     
     return next_player
 
@@ -230,17 +237,17 @@ def player_turn(current_player):
         column_valid = check_column(column)
     
 def print_win_message(current_player):
-    print(f"Player {current_player} has won the game!")
+    print(f"{current_player} has won the game!")
 
 
 def main():
     end_game = False
     current_player = None
-    startup()
+    player_1_name, player_2_name = startup()
     grid = make_grid() 
     print_grid(grid)
     while end_game == False:
-        current_player = get_next_player(current_player)
+        current_player = get_next_player(current_player, player_1_name, player_2_name)
         column_validity = False
         while column_validity == False:
             column = input_column(current_player)

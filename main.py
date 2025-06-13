@@ -232,7 +232,7 @@ def player_turn(current_player):
         column_valid = check_column(column)
     
 def print_win_message(winning_player):
-    print("")
+    print(f"Player {winning_player} has won the game!")
 
 
 def main():

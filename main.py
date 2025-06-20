@@ -14,10 +14,31 @@ def startup():
     print(" \____/\___/|_| |_|_| |_|\___|\___| \__|     |_/ \n")
 
     print("Enter P to play")
-    player_1_name = input("Player 1, enter your name: ")
-    player_2_name = input("Player 2, enter your name: ")
-    
-    return player_1_name, player_2_name
+    print("Enter Q to quit")
+
+    choice = input().lower().strip()
+    while choice != "p" and choice != "q":
+        choice = input("Please enter a valid option. " )
+    if choice == "p":
+        player_1_name = input("Player 1, enter your name: ").strip()
+        while len(player_1_name) < 2 or len(player_1_name) > 20:
+            if len(player_1_name) < 2:
+                print("Your name has to be longer than 1 character.")
+                player_1_name = input("Player 1, enter your name: ")
+            else:
+                print("Your name has to be shorter than 20 characters.")
+                player_1_name = input("Player 1, enter your name: ")
+        player_2_name = input("Player 2, enter your name: ")
+        while len(player_2_name) < 2 or len(player_2_name) > 20:
+            if len(player_2_name) < 2:
+                print("Your name has to be longer than 1 character.")
+                player_2_name = input("Player 2, enter your name: ")
+            else:
+                print("Your name has to be shorter than 20 characters.")
+                player_2_name = input("Player 2, enter your name: ")
+        return player_1_name, player_2_name
+    else:
+        exit()
 
 def make_grid():
     return [[" ", " ", " ", " ", " ", " ", " "],
@@ -28,7 +49,14 @@ def make_grid():
             [" ", " ", " ", " ", " ", " ", " "]]
 
 def input_column(current_player):
-    column = input(f"{current_player}, which column would you like to drop your tile in (A-G)? ").upper()
+    column = input(f"{current_player}, which column would you like to drop your tile in (A-G)? ").upper().strip()
+    while column not in VALID_COLUMNS:
+        if len(column) != 1:
+            print("Please input one letter (A-G)")
+            column = input(f"{current_player}, which column would you like to drop your tile in (A-G)? ").upper().strip()
+        else:
+            print("Your input has to be either A or B or C or D or E or F or G.")
+            column = input(f"{current_player}, which column would you like to drop your tile in (A-G)? ").upper().strip()
     return column
 
 def check_column(column, grid):

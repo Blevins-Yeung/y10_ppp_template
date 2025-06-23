@@ -29,7 +29,7 @@ def startup():
                 print("Your name has to be shorter than 20 characters.")
                 player_1_name = input("Player 1, enter your name: ")
         player_2_name = input("Player 2, enter your name: ")
-        while len(player_2_name) < 2 or len(player_2_name) > 20 or player_1_name == player_2_name:
+        while len(player_2_name) < 2 or len(player_2_name) > 20 or player_1_name.strip().lower() == player_2_name.strip().lower():
             if len(player_2_name) < 2:
                 print("Your name has to be longer than 1 character.")
                 player_2_name = input("Player 2, enter your name: ")

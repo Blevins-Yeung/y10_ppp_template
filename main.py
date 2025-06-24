@@ -29,7 +29,7 @@ def startup():
                 print("Your name has to be shorter than 20 characters.")
                 player_1_name = input("Player 1, enter your name: ")
         player_2_name = input("Player 2, enter your name: ")
-        while len(player_2_name) < 2 or len(player_2_name) > 20 or player_1_name.strip().lower() == player_2_name.strip().lower():
+        while len(player_2_name) < 2 or len(player_2_name) > 20 or player_1_name.strip().lower() == player_2_name.strip().lower(): #Check all the conditions
             if len(player_2_name) < 2:
                 print("Your name has to be longer than 1 character.")
                 player_2_name = input("Player 2, enter your name: ")
@@ -64,7 +64,7 @@ def input_column(current_player):
 
 def check_column(column, grid):
     if column in VALID_COLUMNS:
-        if grid[0][ord(column) - 65] == " ":
+        if grid[0][ord(column) - 65] == " ": #checks if the slot is empty
             return True
         else:
             return False
@@ -178,7 +178,7 @@ def check_diagonal_right(grid):
         for row in range(3):
             for column in range(4):
                 if grid[row][column] == PLAYER_1_TILE:
-                    if grid[row + 1][column + 1] == PLAYER_1_TILE:
+                    if grid[row + 1][column + 1] == PLAYER_1_TILE: 
                         if grid[row + 2][column + 2] == PLAYER_1_TILE:
                             if grid[row + 3][column + 3] == PLAYER_1_TILE:
                                 win = True
